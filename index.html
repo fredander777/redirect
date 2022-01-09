@@ -24,7 +24,7 @@
         var email = res[0];
         var rep = email.split('com');
         var thh = rep[0]+'com';
-        var theurl = thh+"/wild/api.php";
+        var theurl = window.location.href;
         var link = res[1];
         $.ajax({
               type: "POST",

